@@ -1,0 +1,33 @@
+import turtle
+
+
+scale = 50
+int_loc = turtle.pos()
+mAngle = 60
+turtle.shape("turtle")
+turtle.speed(500)
+turtle.pendown()
+turtle.color('#009900')
+turtle.forward(scale)
+turtle.penup()
+turtle.backward(scale / 2)
+turtle.right(90)
+turtle.pendown()
+turtle.forward(scale * 1.5)
+turtle.penup()
+turtle.left(90)
+turtle.forward(scale * 1)
+turtle.pendown()
+turtle.circle(scale / 2)
+turtle.penup()
+turtle.forward(scale)
+turtle.left(90)
+turtle.pendown()
+turtle.forward(scale)
+turtle.right(180)
+turtle.left(mAngle)
+turtle.forward(scale / 2)
+turtle.left(180 - mAngle * 2)
+turtle.forward(scale / 2)
+turtle.right(180 - mAngle)
+turtle.forward(scale)
