@@ -126,10 +126,9 @@ def loops_3():
     for i in range(10):
         number_row = []
         for j in range(10):
-            number_row.append(i)
+            number_row.append(str(i))
         number_square.append(number_row)
     return number_square
-
 
 
 def loops_4():
@@ -147,7 +146,13 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    pass
+    number_square = []
+    for i in range(10):
+        number_sequence = []
+        for j in range(10):
+            number_sequence.append(i)
+    number_square.append(number_sequence)
+    return number_square
 
 
 def loops_5():
