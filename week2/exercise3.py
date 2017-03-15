@@ -39,7 +39,6 @@ def loops_1a():
     return star_list
 
 
-
 def star_map():
     """Use a map to make stars and bangs.
 
