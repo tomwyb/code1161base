@@ -150,8 +150,8 @@ def loops_4():
     for i in range(10):
         number_sequence = []
         for j in range(10):
-            number_sequence.append(i)
-    number_square.append(number_sequence)
+            number_sequence.append(str(j))
+        number_square.append(number_sequence)
     return number_square
 
 
