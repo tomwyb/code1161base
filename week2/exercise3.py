@@ -210,7 +210,7 @@ def loops_6():
     for i in range(10):
         number_pyramid = []
         for j in range(i + 1):
-            number_pyramid.append(j)
+            number_pyramid.append(str(j))
         the_wedge.append(number_pyramid)
     return the_wedge
 
@@ -236,7 +236,13 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pass
+    ihatepyramids_box = []
+    for i in range(10):
+        ihatepyramids_inside = []
+        for j in range(10):
+            ihatepyramids_inside.append("*")
+        ihatepyramids_box.append(ihatepyramids_inside)
+    return ihatepyramids_box
 
 
 def lp(some_kind_of_list, exercise_name):
