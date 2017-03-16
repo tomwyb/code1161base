@@ -237,10 +237,16 @@ def loops_7():
     lots of diagrams!
     """
     ihatepyramids_box = []
-    for i in range(10):
+    for i in range(5):
         ihatepyramids_inside = []
-        for j in range(10):
+        for j in range(4-i):
+            ihatepyramids_inside.append(" ")
+        for j in range(1+i):
             ihatepyramids_inside.append("*")
+        for j in range(0+i):
+            ihatepyramids_inside.append("*")
+        for j in range(4-i):
+            ihatepyramids_inside.append(" ")
         ihatepyramids_box.append(ihatepyramids_inside)
     return ihatepyramids_box
 
