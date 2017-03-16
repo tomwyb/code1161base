@@ -186,7 +186,6 @@ def loops_5():
     return number_square
 
 
-
 def loops_6():
     """Make a wedge of numbers.
 
@@ -207,7 +206,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    pass
+    the_wedge = []
+    for i in range(10):
+        number_pyramid = []
+        for j in range(i + 1):
+            number_pyramid.append(j)
+        the_wedge.append(number_pyramid)
+    return the_wedge
 
 
 def loops_7():
