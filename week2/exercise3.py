@@ -9,7 +9,7 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    pass
+    return (a_number % 2) != 0
 
 
 def fix_it(moves=True, should_move=True):
@@ -23,7 +23,12 @@ def fix_it(moves=True, should_move=True):
     "Duct Tape"
     "No Problem"
     """
-    pass
+    if moves == should_move:
+        return ("No Problem")
+    elif moves is True:
+        return ("Duct Tape")
+    else:
+        return ("WD-40")
 
 
 def loops_1a():
@@ -33,7 +38,11 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    pass
+
+    star_list = []
+    for number in range(10):
+        star_list.append("*")
+    return star_list
 
 
 def star_map():
@@ -44,7 +53,9 @@ def star_map():
     if it's even. Reuse the is odd function that you've already written.
     E.g.: ["!", "*", "!", "*", "!", "*", "!", "*", "!", "*"]
     """
-    pass
+    star_list = [loops_1a]
+    print(star_list)
+    return star_list
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -55,7 +66,8 @@ def loops_1c(number_of_items=5, symbol="#"):
     a string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
-    pass
+    respond_list = [str(symbol)] * number_of_items
+    return respond_list
 
 
 def loops_2():
@@ -76,7 +88,8 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    pass
+    vert = [list("*" * 10)] * 10
+    return vert
 
 
 def loops_3():
@@ -100,8 +113,15 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    pass
 
+    content = 0
+    hori = []
+    vert = []
+    for number in range(10):
+        hori = [str(content)]*10
+        vert.append(hori)
+        content = content + 1
+    return vert
 
 def loops_4():
     """Make a block of numbers that rises left to right.
@@ -118,7 +138,14 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    pass
+    content = 0
+    hori = []
+    vert = []
+    for number in range(10):
+        hori.append(str(content))
+        content = content + 1
+    vert = [hori]*10
+    return vert
 
 
 def loops_5():
@@ -166,7 +193,14 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    pass
+    last = 1
+    hori = []
+    vert = []
+    for number in range(10):
+        hori = [str(range(0, last))]
+        last = last + 1
+        vert.append(hori)
+    return vert
 
 
 def loops_7():
