@@ -12,7 +12,11 @@ def loop_ranger(start, stop=None, step=1):
 
     Do this using any method apart from just using range()
     """
-    pass
+    first_loop = []
+    while start < stop:
+        first_loop.append(start)
+        start += step
+    return first_loop
 
 
 def lone_ranger(start, stop, step):
@@ -20,7 +24,10 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    pass
+    second_loop = []
+    for i in range(start, stop, step):
+        second_loop.append(i)
+    return second_loop
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +36,12 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    pass
+    step = 2
+    third_loop = []
+    while start < stop:
+        third_loop.append(start)
+        start += step
+    return third_loop
 
 
 def gene_krupa_range(start, stop, even_step, odd_step):
@@ -38,7 +50,12 @@ def gene_krupa_range(start, stop, even_step, odd_step):
     make a list that instead of having evenly spaced steps
     has odd steps be one size and even steps be another.
     """
-    pass
+    fourth_loop = []
+    while start < stop:
+        fourth_loop.append(start)
+        start += even_step
+        start += odd_step
+    return fourth_loop
 
 
 def stubborn_asker(low, high):
@@ -78,7 +95,7 @@ if __name__ == "__main__":
     # inside Atom, you need to run them from the terminal. E.g.:
     # ben@um:~/projects/git/code1161base$ python week3/exercise1.py
 
-    print("\nloop_ranger", loop_ranger(1, 10, 2))
+    print("\nloop_ranger", loop_ranger(2, 10, 2))
     print("\nlone_ranger", lone_ranger(1, 10, 3))
     print("\ntwo_step_ranger", two_step_ranger(1, 10))
     print("\ngene_krupa_range", gene_krupa_range(1, 20, 2, 5))
