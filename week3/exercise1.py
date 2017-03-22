@@ -13,9 +13,10 @@ def loop_ranger(start, stop=None, step=1):
     Do this using any method apart from just using range()
     """
     loopy_range = []
-    while start >= stop:
+    while start < stop:
         loopy_range.append(start)
         start = start + step
+    print(loopy_range)
     return loopy_range
 
 
@@ -38,9 +39,10 @@ def two_step_ranger(start, stop):
     Make a range function that always has a step size of 2
     """
     double_step_range = []
-    while start <= stop:
+    while start < stop:
         double_step_range.append(start)
         start = start + 2
+    print(double_step_range)
     return double_step_range
 
 
@@ -55,10 +57,13 @@ def gene_krupa_range(start, stop, even_step, odd_step):
     while start < stop:
         gk_range.append(start)
         if it_num % 2 != 0:
-            start += odd_step
-        else:
+            print(str(it_num) + "odd")
             start += even_step
+        else:
+            print(str(it_num) + "even")
+            start += odd_step
         it_num += 1
+    print (gk_range)
     return gk_range
 
 
