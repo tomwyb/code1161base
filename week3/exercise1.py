@@ -101,7 +101,18 @@ def super_asker(low, high):
     Combine stubborn_asker and not_number_rejector to make a function
     that does it all!
     """
-    pass
+    message = "Enter a number between {} and {}: ".format(low, high)
+    while True:
+        try:
+            ask_number = int(raw_input(message))
+            if low < ask_number < high:
+                print("{} is correct!".format(ask_number))
+                return ask_number
+            else:
+                print("{} is not between {} and {}".format(ask_number, low,
+                                                           high))
+        except Exception as e:
+            print("an actual number please ({})".format(e))
 
 
 if __name__ == "__main__":
