@@ -53,9 +53,16 @@ def star_map():
     if it's even. Reuse the is odd function that you've already written.
     E.g.: ["!", "*", "!", "*", "!", "*", "!", "*", "!", "*"]
     """
-    star_list = [loops_1a]
-    print(star_list)
-    return star_list
+
+    star_bang = []
+
+    def odd_bang(index):
+        if is_odd(index):
+            return "*"
+        else:
+            return "!"
+    star_bang = map(odd_bang, range(10))
+    return star_bang
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -123,6 +130,7 @@ def loops_3():
         content = content + 1
     return vert
 
+
 def loops_4():
     """Make a block of numbers that rises left to right.
 
@@ -170,7 +178,23 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    pass
+    y = 0
+    x = 0
+    xy = '(i%s, j%s)'
+    column = []
+
+    def coordrow(rowxy, rowx, rowy):
+        row = []
+        for i in range(5):
+            row.append(rowxy % (rowy, rowx))
+            rowx += 1
+        return row
+
+    for i in range(10):
+        column.append(coordrow(xy, x, y))
+        y += 1
+
+    return column
 
 
 def loops_6():
@@ -193,13 +217,20 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    last = 1
-    hori = []
+    length = 1
     vert = []
-    for number in range(10):
-        hori = [str(range(0, last))]
-        last = last + 1
-        vert.append(hori)
+
+    def count_to_last(first, last):
+        row = []
+        for i in range(last):
+            row.append(str(first))
+            first += 1
+        return row
+
+    while length <= 10:
+        vert.append(count_to_last(0, length))
+        length += 1
+
     return vert
 
 
@@ -224,7 +255,19 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pass
+
+    pyr = []
+
+    for i in range(5):
+        row = []
+        for x in range(9):
+            if x < (4 - i) or x > (4 + i):
+                row.append(" ")
+            else:
+                row.append("*")
+        pyr.append(row)
+
+    return pyr
 
 
 def lp(some_kind_of_list, exercise_name):
@@ -261,7 +304,7 @@ if __name__ == "__main__":
     print(fix_it(False, True), "fix_it")
     print(fix_it(False, False), "fix_it")
     lp(loops_1a(), "loops_1a")
-    lp(star_map(), "star_map")
+    lp(star_map(), "loops_1b")
     lp(loops_1c(4, "×°×"), "loops_1c")
     lp(loops_2(), "loops_2")
     lp(loops_3(), "loops_3")
