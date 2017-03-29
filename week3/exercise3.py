@@ -4,9 +4,42 @@ Steps on the way to making your own guessing game.
 """
 from __future__ import division
 from __future__ import print_function
-from exercise1 import not_number_rejector
-from exercise1 import super_asker
 import random
+
+
+def not_number_rejector():
+    message = "enter a number: "
+    while True:
+        try:
+            y = int(raw_input(message))
+            return y
+        except:
+            print("A 'NUMBER', dummy :")
+
+
+def greater_than_rejector(low):
+    while True:
+        x = not_number_rejector()
+        if low < x:
+            return x
+        else:
+            print ("Upper means bigger, you mook:")
+
+
+def super_asker(low, high):
+    ask = "Enter a number between %s and %s: " % (low, high)
+    while True:
+            try:
+                z = int(raw_input(ask))
+                if low <= z and z <= high:
+                    print("Hooray for you!")
+                    return z
+                else:
+                    print ("Between %s and %s, dummy:" % (low, high))
+            except:
+                print("Not a number, dingis")
+
+    return int(z)
 
 
 def advancedGuessingGame():
@@ -28,7 +61,28 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-    pass
+
+    print("\nwelcome to the ADVANCED guessing game!")
+    print("\nLet's set a lower bound\n")
+    lowerBound = not_number_rejector()
+    print("\nOK, now let's set a upper bound\n")
+    upperBound = greater_than_rejector(lowerBound)
+    print("BEGIN FUN GAME!")
+    actualNumber = random.randint(lowerBound, upperBound)
+
+    guessed = False
+
+    while not guessed:
+        guessedNumber = int(super_asker(lowerBound, upperBound))
+        print("you guessed {},".format(guessedNumber),)
+        if guessedNumber == actualNumber:
+            print("you got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("too small, try again ")
+        else:
+            print("too big, try again   ")
+    return "You got it!"
 
 
 if __name__ == "__main__":
