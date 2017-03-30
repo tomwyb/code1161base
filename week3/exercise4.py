@@ -3,7 +3,6 @@
 from __future__ import division
 from __future__ import print_function
 import math
-# import time
 
 
 def binary_search(low, high, actual_number):
@@ -27,7 +26,20 @@ def binary_search(low, high, actual_number):
       (You should remove them from the file, not comment them out, the
       tests aren't that smart yet.)
     """
-    pass
+    GUARD = 10
+    tries = 0
+
+    while True and tries < GUARD:
+        guess = int(math.floor((high - low)/2) + low)
+        if guess < actual_number:
+            low = guess
+        elif guess > actual_number:
+            high = guess
+        elif guess == actual_number:
+            return {"guess": guess, "tries": tries}
+        else:
+            print("fml")
+        tries += 1
 
 
 if __name__ == "__main__":
