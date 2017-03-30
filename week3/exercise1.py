@@ -102,10 +102,12 @@ def super_asker(low, high):
     """
     message = "Enter a number between {} and {}: ".format(low, high)
     while True:
+        raw = raw_input(message)
+        print(type(raw), raw)
         try:
-            ask_number = int(raw_input(message))
+            ask_number = int(raw)
             if low < ask_number < high:
-                print("{} is correct!".format(ask_number))
+                print("{} is in range!".format(ask_number))
                 return ask_number
             else:
                 print("{} is not between {} and {}".format(ask_number, low,
