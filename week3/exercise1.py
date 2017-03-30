@@ -85,7 +85,6 @@ def not_number_rejector(message):
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    message = "Enter a number plez: "
     while True:
         try:
             ask_number = int(raw_input(message))
