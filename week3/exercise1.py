@@ -103,7 +103,6 @@ def super_asker(low, high):
     message = "Enter a number between {} and {}: ".format(low, high)
     while True:
         raw = raw_input(message)
-        print(type(raw), raw)
         try:
             ask_number = int(raw)
             if low < ask_number < high:
