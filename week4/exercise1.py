@@ -28,7 +28,13 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    pass
+    mode = "r"  # from the docs
+    file_path = str(CWD)+"/week1/pySuccessMessage.json"
+    success = open(file_path, mode)
+    success = success.read()
+    contents = json.load(success)
+    return(contents["message"])
+    success.close()
 
 
 def get_some_details():
@@ -47,12 +53,16 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
-
+    json_data = open(str(LOCAL) + "/lazyduck.json", "r").read()
     data = json.loads(json_data)
-    return {"lastName":       None,
-            "password":       None,
-            "postcodePlusID": None
+    lastName = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    post = data["results"][0]["location"]["postcode"]
+    ID = data["results"][0]["id"]["value"]
+    postPlus = int(post)+int(ID)
+    return {"lastName":       lastName,
+            "password":       password,
+            "postcodePlusID": postPlus
             }
 
 
@@ -88,7 +98,36 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
-    pass
+    existPyr = (
+          "cep",
+          "dwine",
+          "tenoner",
+          "ectomeric",
+          "archmonarch",
+          "phlebenterism",
+          "autonephrotoxin",
+          "redifferentiation",
+          "phytosociologically",
+          "theologicohistorical",
+          "supersesquitertial",
+          "phosphomolybdate",
+          "spermatophoral",
+          "storiologist",
+          "concretion",
+          "geoblast",
+          "Nereis",
+          "Leto",
+          )
+    pyrLen = len(existPyr)
+    wordLen = []
+    pyramid = []
+    URL = "http://www.setgetgo.com/randomword/get.php?len="
+    for i in range(int(pyrLen)):
+        wordLen.append(str(len(existPyr[i])))
+    for j in range(int(pyrLen)):
+        urlApi = URL+wordLen[j]
+        pyramid.append(requests.get(urlApi)
+    return pyramid
 
 
 def wunderground():
@@ -137,5 +176,5 @@ def diarist():
 if __name__ == "__main__":
     print([len(w) for w in wordy_pyramid()])
     print(get_some_details())
-    print(wunderground())
-    print(diarist())
+    # print(wunderground())
+    # # print(diarist())
