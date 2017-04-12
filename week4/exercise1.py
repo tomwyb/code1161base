@@ -28,7 +28,17 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    pass
+    mode = "r"
+    print("start")
+    file_path = CWD + "/week1/pySuccessMessage.json"
+    print(file_path)
+    success_msg = open(file_path, mode)
+    # success_msg = success_msg.read()
+    # print(success_msg)
+    contents = json.load(success_msg)
+    print(contents["message"])
+    success_msg.close()
+    return(success_msg)
 
 
 def get_some_details():
@@ -50,9 +60,14 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName":       None,
-            "password":       None,
-            "postcodePlusID": None
+    lastName = data["results"][0]["name"]["last"]
+    password = data["results"][2]["login"]["password"]
+    postcode = int(data["results"][1]["postcode"])
+    aidee = int(data["results"][3]["id"]["value"])
+    postcodePlusID = postcode + aidee
+    return {"lastName":       lastName,
+            "password":       password,
+            "postcodePlusID": postcodePlusID
             }
 
 
@@ -88,6 +103,17 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
+    # you want to order the string name according to shortest to longest
+    # get = take something from internet
+    # push = give it back to the internet
+
+    import requests
+    URL = "http://randomword.setgetgo.com/get.php"
+    word_source = requests.get(URL)
+    make_pyramid = []
+    for i in range(3, 20, 2):
+        make_pyramid.append(word_source)
+    return make_pyramid
     pass
 
 
@@ -135,7 +161,8 @@ def diarist():
 
 
 if __name__ == "__main__":
-    print([len(w) for w in wordy_pyramid()])
+    success_is_relative()
+    # print([len(w) for w in wordy_pyramid()])
     print(get_some_details())
     print(wunderground())
     print(diarist())
