@@ -33,8 +33,6 @@ def success_is_relative():
     file_path = CWD + "/week1/pySuccessMessage.json"
     print(file_path)
     success_msg = open(file_path, mode)
-    # success_msg = success_msg.read()
-    # print(success_msg)
     contents = json.load(success_msg)
     print(contents["message"])
     success_msg.close()
