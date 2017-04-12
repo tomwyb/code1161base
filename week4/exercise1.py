@@ -59,10 +59,10 @@ def get_some_details():
 
     data = json.loads(json_data)
     lastName = data["results"][0]["name"]["last"]
-    password = data["results"][2]["login"]["password"]
-    postcode = int(data["results"][1]["postcode"])
-    aidee = int(data["results"][3]["id"]["value"])
-    postcodePlusID = postcode + aidee
+    password = data["results"][0]["login"]["password"]
+    postcode = int(data["results"][0]["location"]["postcode"])
+    id_result = int(data["results"][0]["id"]["value"])
+    postcodePlusID = postcode + id_result
     return {"lastName":       lastName,
             "password":       password,
             "postcodePlusID": postcodePlusID
@@ -160,6 +160,7 @@ def diarist():
 
 if __name__ == "__main__":
     success_is_relative()
+    get_some_details()
     # print([len(w) for w in wordy_pyramid()])
     print(get_some_details())
     print(wunderground())
