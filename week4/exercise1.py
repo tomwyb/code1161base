@@ -116,7 +116,7 @@ def wordy_pyramid():
         r = requests.get(url)
         message = r.text
         make_pyramid.append(message)
-    print(make_pyramid)
+    # print(make_pyramid)
     return make_pyramid
 
 
@@ -140,11 +140,14 @@ def wunderground():
     r = requests.get(url)
     the_json = json.loads(r.text)
     obs = the_json['current_observation']
-
-    return {"state":           None,
-            "latitude":        None,
-            "longitude":       None,
-            "local_tz_offset": None}
+    state = obs["display_location"]["state"]
+    latitude = obs["observation_location"]["latitude"]
+    longitude = obs["observation_location"]["longitude"]
+    local_tz_offset = obs["local_tz_offset"]
+    return {"state":           state,
+            "latitude":        latitude,
+            "longitude":       longitude,
+            "local_tz_offset": local_tz_offset}
 
 
 def diarist():
