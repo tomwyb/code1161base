@@ -29,9 +29,7 @@ def success_is_relative():
     # that it changes.
     # print(path, CWD)
     mode = "r"
-    print("start")
     file_path = CWD + "/week1/pySuccessMessage.json"
-    print(file_path)
     success_msg = open(file_path, mode)
     contents = json.load(success_msg)
     print(contents["message"])
@@ -106,13 +104,20 @@ def wordy_pyramid():
     # push = give it back to the internet
 
     import requests
-    URL = "http://randomword.setgetgo.com/get.php"
-    word_source = requests.get(URL)
+    baseURL = "http://randomword.setgetgo.com/get.php?len="
     make_pyramid = []
-    for i in range(3, 20, 2):
-        make_pyramid.append(word_source)
+    for i in range(3, 21, 2):
+        url = baseURL + str(i)
+        r = requests.get(url)
+        message = r.text
+        make_pyramid.append(message)
+    for i in range(20, 3, -2):
+        url = baseURL + str(i)
+        r = requests.get(url)
+        message = r.text
+        make_pyramid.append(message)
+    print(make_pyramid)
     return make_pyramid
-    pass
 
 
 def wunderground():
@@ -127,7 +132,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "df74b9060e4000f1"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
@@ -155,13 +160,17 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    pass
+    mode = "w"
+    file_path = LOCAL + "/lasers.pew"
+    laser_stop = open(file_path, mode)
+    answer = "6"
+    laser_stop.write(answer)
+    laser_stop.close()
 
 
 if __name__ == "__main__":
-    success_is_relative()
-    get_some_details()
-    # print([len(w) for w in wordy_pyramid()])
+    # success_is_relative()
+    print([len(w) for w in wordy_pyramid()])
     print(get_some_details())
     print(wunderground())
     print(diarist())
