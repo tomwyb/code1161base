@@ -28,24 +28,11 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    # path = "./week1/pySuccessMessage.json"
-    # mode = "r"
-    # success_msg = open(path, mode)
-    # contents = json.load(success_msg)
-    # inside_msg = contents["message"]
-    # success_msg.close()
-    # return(inside_msg)
-    msg = str(open("./week1/pySuccessMessage.json", 'r').read()).strip('/n')
-    message = ''
-    index = 0
-    while True:
-        if msg[index] == '}':
-            message += msg[index]
-            break
-        else:
-            message += msg[index]
-        index += 1
-    return message
+    path = CWD + "/week1/pySuccessMessage.json"
+    mode = "r"
+    file_ = open(path, mode)
+    dict_ = file_.read().strip(" \n\t")
+    return(dict_)
 
 
 def get_some_details():
