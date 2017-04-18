@@ -26,6 +26,7 @@ you'll need to figure out for yourself what to do.
 
 from __future__ import division
 from __future__ import print_function
+import math
 
 
 # This is a terrible function. The rest of the functions in this file do a
@@ -59,8 +60,13 @@ def do_bunch_of_bad_things():
 
 
 def countdown(message, start, stop, completion_message):
-    for i in range(start, (stop)-1, -1):
-        print(message + str(i))
+    if start > stop:
+        for i in range(start, stop, -1):
+            print(message + str(i))
+    else:
+        for i in range(start, stop, 1):
+            print(message + str(i))
+    print(message + str(stop))
     print(completion_message)
 
 
@@ -74,31 +80,38 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
-    pass
+    hypotenuse = math.sqrt(base**2 + height**2)
+    return(hypotenuse)
 
 
 def calculate_area(base, height):
-    pass
+    area = (base * height)/2
+    return(area)
 
 
 def calculate_perimeter(base, height):
-    pass
+    perimeter = calculate_hypotenuse(base, height) + base + height
+    return(perimeter)
 
 
 def calculate_aspect(base, height):
-    pass
-
+    if base == height:
+        return("equal")
+    elif base < height:
+        return("tall")
+    elif base > height:
+        return("wide")
 
 # Make sure you reuse the functions you've already got
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
-    return {"area": None,
-            "perimeter": None,
-            "height": None,
-            "base": None,
-            "hypotenuse": None,
-            "aspect": None,
-            "units": None}
+    return {"area": calculate_area(base, height),
+            "perimeter": calculate_perimeter(base, height),
+            "height": height,
+            "base": base,
+            "hypotenuse": calculate_hypotenuse(base, height),
+            "aspect": calculate_aspect(base, height),
+            "units": units}
 
 
 # this should return a multi line string that looks a bit like this:
@@ -151,27 +164,17 @@ def tell_me_about_this_right_triangle(facts_dictionary):
 
 
 def triangle_master(base,
-                    height):
-                    # return_diagram=False,
-                    # return_dictionary=False):
-    # if return_diagram and return_dictionary:
-    #     return None
-    # elif return_diagram:
-    #     return None
-    # elif return_dictionary:
-    #     return None
-    # else:
-    #     print("You're an odd one, you don't want anything!")
-
-    hypotenuse = base**2 + height**2
-    printout = ("This triangle is {area}{units}²\n"
-                "It has a perimeter of {perimeter}{units}\n"
-                "This is a {aspect} triangle.\n")
-    facts = printout.format(area=(base * height)/2,
-                            units="cm",
-                            perimeter=(base + height + hypotenuse),
-                            aspect="")
-    print(facts)
+                    height,
+                    return_diagram=False,
+                    return_dictionary=False):
+    if return_diagram and return_dictionary:
+        return None
+    elif return_diagram:
+        return None
+    elif return_dictionary:
+        return None
+    else:
+        print("You're an odd one, you don't want anything!")
 
 
 def wordy_pyramid():
@@ -204,9 +207,3 @@ def list_of_words_with_lengths(start, end, stop):
 
 if __name__ == "__main__":
     do_bunch_of_bad_things()
-    print(countdown("Getting ready to start in ", 9, 1, "Let's go!"))
-    print(triangle_master(3,
-                          4))
-    #   return_diagram=False,
-    #   return_dictionary=False))
-    # wordy_pyramid()
