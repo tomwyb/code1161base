@@ -107,13 +107,13 @@ def calculate_aspect(base, height):
 
 
 def get_triangle_facts(base, height, units="mm"):
-    return {"area": calculate_area(base, height),
-            "perimeter": calculate_perimeter(base, height),
-            "height": height,
-            "base": base,
-            "hypotenuse": calculate_hypotenuse(base, height),
-            "aspect": calculate_aspect(base, height),
-            "units": units}
+    return{"area": calculate_area(base, height),
+           "perimeter": calculate_perimeter(base, height),
+           "height": height,
+           "base": base,
+           "hypotenuse": calculate_hypotenuse(base, height),
+           "aspect": calculate_aspect(base, height),
+           "units": units}
 
 
 # this should return a multi line string that looks a bit like this:
@@ -129,12 +129,8 @@ def get_triangle_facts(base, height, units="mm"):
 # This triangle is 60.0mm²
 # It has a perimeter of 40.0mm
 # This is a tall triangle.
-#
-# but with the values and shape that relate to the specific
-# triangle we care about.
 def tell_me_about_this_right_triangle(facts_dictionary):
-    # if calculate_aspect(base, height) = tall:
-    tall = """
+    tall_ = """
             {height}
             |
             |     |\\
@@ -143,14 +139,14 @@ def tell_me_about_this_right_triangle(facts_dictionary):
                   |   \\
                   ------
                   {base}"""
-    wide = """
+    wide_ = """
             {hypotenuse}
              ↓         ∕ |
                    ∕     | <-{height}
                ∕         |
             ∕------------|
               {base}"""
-    equal = """
+    equal_ = """
             {height}
             |
             |     |⋱
@@ -164,18 +160,25 @@ def tell_me_about_this_right_triangle(facts_dictionary):
 
     facts = pattern.format(**facts_dictionary)
 
+    if facts_dictionary["aspect"] == "tall":
+        return(tall_.format(**facts_dictionary) + "\n" + facts)
+    elif facts_dictionary["aspect"] == "wide":
+        return(wide_.format(**facts_dictionary) + "\n" + facts)
+    elif facts_dictionary["aspect"] == "equal":
+        return(equal_.format(**facts_dictionary) + "\n" + facts)
 
 
 def triangle_master(base,
                     height,
                     return_diagram=False,
                     return_dictionary=False):
+    get_tri = get_triangle_facts(base, height, units="mm")
     if return_diagram and return_dictionary:
-        return None
+        return tell_me_about_this_right_triangle(get_tri)
     elif return_diagram:
-        return None
+        return tell_me_about_this_right_triangle(get_tri)
     elif return_dictionary:
-        return None
+        return tell_me_about_this_right_triangle(get_tri)
     else:
         print("You're an odd one, you don't want anything!")
 
@@ -205,8 +208,12 @@ def get_a_word_of_length_n(length):
 
 
 def list_of_words_with_lengths(start, end, stop):
+    # get_a_word_of_length_n(length)
     pass
 
 
 if __name__ == "__main__":
-    do_bunch_of_bad_things()
+    # do_bunch_of_bad_things()
+    print(get_triangle_facts(3, 4, units="mm"))
+    print(tell_me_about_this_right_triangle(get_triangle_facts(3, 4,
+                                                               units="mm")))
