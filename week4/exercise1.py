@@ -118,15 +118,29 @@ def wordy_pyramid():
           "Nereis",
           "Leto",
           )
-    pyrLen = len(existPyr)
+    pyrLen = 18     # int(len(existPyr))
     wordLen = []
     pyramid = []
     URL = "http://www.setgetgo.com/randomword/get.php?len="
-    for i in range(int(pyrLen)):
-        wordLen.append(str(len(existPyr[i])))
-    for j in range(int(pyrLen)):
-        urlApi = URL+wordLen[j]
-        pyramid.append(requests.get(urlApi)
+    for i in range(pyrLen):
+        wordLen.append(len(existPyr[i]))
+    for j in range(pyrLen):
+        r = requests.get(URL+str(wordLen[j]))
+        r = r.text
+        r.strip("u'")
+        pyramid.append(r)
+    # for j in range(3, 19, 2):
+    #     r = requests.get(URL+str(j))
+    #     r = r.text
+    #     pyramid.append(r)
+    # r = requests.get(URL+"20")
+    # r = r.text
+    # pyramid.append(r)
+    # for j in range(18, 4, 2):
+    #     r = requests.get(URL+str(j))
+    #     r = r.text
+    #     pyramid.append(r)
+    print (pyramid)
     return pyramid
 
 
