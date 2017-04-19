@@ -1,6 +1,23 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @sheldakristie
+ Sign out
+ Watch 8
+  Star 5
+  Fork 86 notionparallax/code1161base
+ Code  Issues 3  Pull requests 0  Projects 1  Wiki  Pulse  Graphs
+Branch: master Find file Copy pathcode1161base/week5/tests.py
+e7027ec  3 days ago
+@notionparallax notionparallax Flip the order
+1 contributor
+RawBlameHistory
+339 lines (296 sloc)  11.7 KB
 # -*- coding: UTF-8 -*-
 """Test week 5's code.
-
 This file tests your code. It'll check that the work in each
 of the exercise files does what it's supposed to.
 """
@@ -43,7 +60,6 @@ def test_diagrams(diagram, expected):
 
 def test_word_length(word, requested_length, expected_length):
     """Check that word lenths are as expected.
-
     Requesting a word less than 3 chars long should fail.
     """
     if type(requested_length) is str and word is not None:
