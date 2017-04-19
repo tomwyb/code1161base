@@ -60,14 +60,17 @@ def do_bunch_of_bad_things():
 
 
 def countdown(message, start, stop, completion_message):
+    cntdwn_list = []
     if start > stop:
-        for i in range(start, stop, -1):
-            print(message + str(i))
+        step = -1
+    elif start == stop:
+        return(completion_message)
     else:
-        for i in range(start, stop, 1):
-            print(message + str(i))
-    print(message + str(stop))
-    print(completion_message)
+        step = 1
+    for i in range(start, stop, step):
+        cntdwn_list.append(message + " {}".format(i))
+    cntdwn_list.append(completion_message)
+    return(cntdwn_list)
 
 
 # TRIANGLES
@@ -102,8 +105,7 @@ def calculate_aspect(base, height):
     elif base > height:
         return("wide")
 
-# Make sure you reuse the functions you've already got
-# Don't reinvent the wheel
+
 def get_triangle_facts(base, height, units="mm"):
     return {"area": calculate_area(base, height),
             "perimeter": calculate_perimeter(base, height),
@@ -131,6 +133,7 @@ def get_triangle_facts(base, height, units="mm"):
 # but with the values and shape that relate to the specific
 # triangle we care about.
 def tell_me_about_this_right_triangle(facts_dictionary):
+    # if calculate_aspect(base, height) = tall:
     tall = """
             {height}
             |
