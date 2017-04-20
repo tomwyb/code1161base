@@ -172,13 +172,14 @@ def triangle_master(base,
                     height,
                     return_diagram=False,
                     return_dictionary=False):
-    get_tri = get_triangle_facts(base, height, units="mm")
+    dictionary = get_triangle_facts(base, height, units="mm")
+    diagram = tell_me_about_this_right_triangle(dictionary)
     if return_diagram and return_dictionary:
-        return tell_me_about_this_right_triangle(get_tri)
+        return {"diagram": diagram, "facts": dictionary}
     elif return_diagram:
-        return tell_me_about_this_right_triangle(get_tri)
+        return diagram
     elif return_dictionary:
-        return tell_me_about_this_right_triangle(get_tri)
+        return {"facts": dictionary}
     else:
         print("You're an odd one, you don't want anything!")
 
