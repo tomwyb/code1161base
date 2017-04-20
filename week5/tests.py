@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 """Test week 5's code.
+
 This file tests your code. It'll check that the work in each
 of the exercise files does what it's supposed to.
 """
@@ -42,6 +43,7 @@ def test_diagrams(diagram, expected):
 
 def test_word_length(word, requested_length, expected_length):
     """Check that word lenths are as expected.
+
     Requesting a word less than 3 chars long should fail.
     """
     if type(requested_length) is str and word is not None:
