@@ -30,6 +30,7 @@ import math
 
 
 def countdown(message, start, stop, completion_message):
+    """Return a countdown message."""
     cntdwn_list = []
     if start > stop:
         step = -1
@@ -44,21 +45,25 @@ def countdown(message, start, stop, completion_message):
 
 
 def calculate_hypotenuse(base, height):
+    """Return the triangle's hypotenuse."""
     hypotenuse = math.sqrt(base**2 + height**2)
     return(hypotenuse)
 
 
 def calculate_area(base, height):
+    """Return the triangle's area."""
     area = (base * height)/2
     return(area)
 
 
 def calculate_perimeter(base, height):
+    """Return the triangle's perimeter."""
     perimeter = calculate_hypotenuse(base, height) + base + height
     return(perimeter)
 
 
 def calculate_aspect(base, height):
+    """Return the triangle's aspect."""
     if base == height:
         return("equal")
     elif base < height:
@@ -68,6 +73,7 @@ def calculate_aspect(base, height):
 
 
 def get_triangle_facts(base, height, units="mm"):
+    """Return a dictionary used for facts."""
     return{"area": calculate_area(base, height),
            "perimeter": calculate_perimeter(base, height),
            "height": height,
@@ -78,6 +84,7 @@ def get_triangle_facts(base, height, units="mm"):
 
 
 def tell_me_about_this_right_triangle(facts_dictionary):
+    """Return a diagram and dictionary."""
     tall_ = """
             {height}
             |
@@ -120,6 +127,7 @@ def triangle_master(base,
                     height,
                     return_diagram=False,
                     return_dictionary=False):
+    """Return a dict, diagram, or dict and diagram."""
     dictionary = get_triangle_facts(base, height, units="mm")
     diagram = tell_me_about_this_right_triangle(dictionary)
     if return_diagram and return_dictionary:
@@ -133,6 +141,7 @@ def triangle_master(base,
 
 
 def wordy_pyramid():
+    """Make a pyramid out of words."""
     list_of_lengths = []
     for i in range(3, 21, 2):
         list_of_lengths.append(i)
@@ -142,6 +151,7 @@ def wordy_pyramid():
 
 
 def get_a_word_of_length_n(length):
+    """Entering a length and fetcihng according to the length."""
     import requests
     baseURL = "http://www.setgetgo.com/randomword/get.php?len="
     if length == 0:
@@ -156,6 +166,7 @@ def get_a_word_of_length_n(length):
 
 
 def list_of_words_with_lengths(list_of_lengths):
+    """Return words that matches the list of lengths."""
     num_list = []
     for i in range(len(list_of_lengths)):
         num_list.append(get_a_word_of_length_n(list_of_lengths[i]))
@@ -163,5 +174,4 @@ def list_of_words_with_lengths(list_of_lengths):
 
 
 if __name__ == "__main__":
-    print(wordy_pyramid())
     pass
