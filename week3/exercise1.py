@@ -105,7 +105,7 @@ def super_asker(low, high):
         raw = raw_input(message)
         try:
             ask_number = int(raw)
-            if low < ask_number < high:
+            if low <= ask_number <= high:
                 print("{} is in range!".format(ask_number))
                 return ask_number
             else:
