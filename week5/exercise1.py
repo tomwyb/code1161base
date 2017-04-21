@@ -202,19 +202,23 @@ def wordy_pyramid():
 
 
 def get_a_word_of_length_n(length):
-    # url = baseURL + str(i)
-    # r = requests.get(url)
-    # message = r.text
-    pass
+    import requests
+    baseURL = "http://www.setgetgo.com/randomword/get.php?len="
+    if length == 0:
+        return(None)
+    elif type(length) != int:
+        return(None)
+    else:
+        url = baseURL + str(length)
+    r = requests.get(url)
+    message = r.text
+    return(message)
 
 
-def list_of_words_with_lengths(start, end, stop):
-    # get_a_word_of_length_n(length)
+def list_of_words_with_lengths(list_of_lengths):
     pass
 
 
 if __name__ == "__main__":
-    # do_bunch_of_bad_things()
-    print(get_triangle_facts(3, 4, units="mm"))
-    print(tell_me_about_this_right_triangle(get_triangle_facts(3, 4,
-                                                               units="mm")))
+    do_bunch_of_bad_things()
+    # print(list_of_words_with_lengths([4, 5, 6]))
