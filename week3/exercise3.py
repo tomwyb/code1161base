@@ -37,16 +37,13 @@ def advancedGuessingGame():
             print ("A number over {} plez: ".format(lowerBound))
         elif upperBound == lowerBound + 1:
             print ("Enter a number over {} plez".format(upperBound))
+        elif lowerBound >= upperBound:
+            print("{} is not a number below upperBound".format(lowerBound))
         else:
             print("Proceed")
             break
 
     actualNumber = random.randint(lowerBound, upperBound)
-
-    # print("""state:
-    # lower:  {}
-    # upper:  {}
-    # actual: {}""".format(lowerBound, upperBound, actualNumber))
 
     guessed = False
 
