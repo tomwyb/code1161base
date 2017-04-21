@@ -216,9 +216,12 @@ def get_a_word_of_length_n(length):
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    num_list = []
+    for i in range(len(list_of_lengths)):
+        num_list.append(get_a_word_of_length_n(list_of_lengths[i]))
+    return num_list
 
 
 if __name__ == "__main__":
     do_bunch_of_bad_things()
-    # print(list_of_words_with_lengths([4, 5, 6]))
+    print(list_of_words_with_lengths([4, 5, 6]))
