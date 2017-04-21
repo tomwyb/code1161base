@@ -185,19 +185,12 @@ def triangle_master(base,
 
 
 def wordy_pyramid():
-    import requests
-    baseURL = "http://www.setgetgo.com/randomword/get.php?len="
     pyramid_list = []
     for i in range(3, 21, 2):
-        url = baseURL + str(i)
-        r = requests.get(url)
-        message = r.text
-        pyramid_list.append(message)
+        pyramid_list.append(list_of_words_with_lengths(i))
     for i in range(20, 3, -2):
-        url = baseURL + str(i)
-        r = requests.get(url)
-        message = r.text
-        pyramid_list.append(message)
+        pyramid_list.append(list_of_words_with_lengths(i))
+    print(pyramid_list)
     return pyramid_list
 
 
@@ -224,4 +217,4 @@ def list_of_words_with_lengths(list_of_lengths):
 
 if __name__ == "__main__":
     do_bunch_of_bad_things()
-    print(list_of_words_with_lengths([4, 5, 6]))
+    print(wordy_pyramid())
