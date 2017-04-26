@@ -22,7 +22,7 @@ def be_cool(name):
     print(name + " is cool")
 
 
-be_cool("smoking")
+be_cool("Ben")
 
 
 def be_cool_for_ever(name, file_path):
@@ -35,7 +35,6 @@ def be_cool_for_ever(name, file_path):
 
 be_cool_for_ever("Ben", "ben_is_cool.txt")
 be_cool_for_ever("Ben", "week4/ben_is_cool.lol_UR_joking")
-be_cool_for_ever("Tom", "week1/tom_is_cool.truth")
 
 
 def who_is_cool(file_path):

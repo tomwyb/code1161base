@@ -31,9 +31,9 @@ def success_is_relative():
     mode = "r"  # from the docs
     file_path = str(CWD)+"/week1/pySuccessMessage.json"
     success = open(file_path, mode)
-    success = success.read()
-    contents = json.load(success)
-    return(contents["message"])
+    success = success.read().strip(" \n\t")
+    # contents = json.load(success)
+    return(success)
     success.close()
 
 
@@ -98,48 +98,51 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
-    existPyr = (
-          "cep",
-          "dwine",
-          "tenoner",
-          "ectomeric",
-          "archmonarch",
-          "phlebenterism",
-          "autonephrotoxin",
-          "redifferentiation",
-          "phytosociologically",
-          "theologicohistorical",
-          "supersesquitertial",
-          "phosphomolybdate",
-          "spermatophoral",
-          "storiologist",
-          "concretion",
-          "geoblast",
-          "Nereis",
-          "Leto",
-          )
-    pyrLen = 18     # int(len(existPyr))
-    wordLen = []
+    # existPyr = (
+    #       "cep",
+    #       "dwine",
+    #       "tenoner",
+    #       "ectomeric",
+    #       "archmonarch",
+    #       "phlebenterism",
+    #       "autonephrotoxin",
+    #       "redifferentiation",
+    #       "phytosociologically",
+    #       "theologicohistorical",
+    #       "supersesquitertial",
+    #       "phosphomolybdate",
+    #       "spermatophoral",
+    #       "storiologist",
+    #       "concretion",
+    #       "geoblast",
+    #       "Nereis",
+    #       "Leto",
+    #       )
+    # pyrLen = 18     # int(len(existPyr))
+    # wordLen = []
     pyramid = []
     URL = "http://www.setgetgo.com/randomword/get.php?len="
-    for i in range(pyrLen):
-        wordLen.append(len(existPyr[i]))
-    for j in range(pyrLen):
-        r = requests.get(URL+str(wordLen[j]))
+    # for i in range(pyrLen):
+    #     wordLen.append(len(existPyr[i]))
+    # for j in range(pyrLen):
+    #     r = requests.get(URL+str(wordLen[j]))
+    #     r = r.text
+    #     r.strip("u'")
+    #     pyramid.append(r)
+    for j in range(3, 19, 2):
+        r = requests.get(URL+str(j))
         r = r.text
-        r.strip("u'")
+        r = r.strip("u'")
         pyramid.append(r)
-    # for j in range(3, 19, 2):
-    #     r = requests.get(URL+str(j))
-    #     r = r.text
-    #     pyramid.append(r)
-    # r = requests.get(URL+"20")
-    # r = r.text
-    # pyramid.append(r)
-    # for j in range(18, 4, 2):
-    #     r = requests.get(URL+str(j))
-    #     r = r.text
-    #     pyramid.append(r)
+    r = requests.get(URL+"20")
+    r = r.text
+    r = r.strip("u'")
+    pyramid.append(r)
+    for j in range(18, 4, 2):
+        r = requests.get(URL+str(j))
+        r = r.text
+        r = r.strip("u'")
+        pyramid.append(r)
     print (pyramid)
     return pyramid
 
@@ -156,7 +159,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "28b9702529106dd6"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
@@ -164,11 +167,14 @@ def wunderground():
     r = requests.get(url)
     the_json = json.loads(r.text)
     obs = the_json['current_observation']
-
-    return {"state":           None,
-            "latitude":        None,
-            "longitude":       None,
-            "local_tz_offset": None}
+    state = obs["display_location"]["state"]
+    latitude = obs["observation_location"]["latitude"]
+    longitude = obs["observation_location"]["longitude"]
+    local_tz_offset = obs["local_tz_offset"]
+    return {"state":           state,
+            "latitude":        latitude,
+            "longitude":       longitude,
+            "local_tz_offset": local_tz_offset}
 
 
 def diarist():
