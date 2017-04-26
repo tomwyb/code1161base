@@ -131,20 +131,33 @@ def wordy_pyramid():
     #     pyramid.append(r)
     for j in range(3, 19, 2):
         r = requests.get(URL+str(j))
-        r = r.text
-        r = r.strip("u'")
-        pyramid.append(r)
-    r = requests.get(URL+"20")
-    r = r.text
-    r = r.strip("u'")
-    pyramid.append(r)
-    for j in range(18, 4, 2):
-        r = requests.get(URL+str(j))
-        r = r.text
-        r = r.strip("u'")
-        pyramid.append(r)
-    print (pyramid)
-    return pyramid
+        # r = r.strip("u'")
+        word = r.text
+        pyramid.append(word)
+    # s = requests.get(URL+"20")
+    # word = s.text
+    # # s = s.strip("u'")
+    # pyramid.append(word)
+    # print (pyramid)
+    # return pyramid
+    for j in range(20, 3, -2):
+        t = requests.get(URL+str(j))
+        # t = t.strip("u'")
+        word = t.text
+        pyramid.append(word)
+    baseURL = "http://www.setgetgo.com/randomword/get.php?len="
+    pyramid_list = []
+    for i in range(3, 21, 2):
+        url = baseURL + str(i)
+        r = requests.get(url)
+        message = r.text
+        pyramid_list.append(message)
+    for i in range(20, 3, -2):
+        url = baseURL + str(i)
+        r = requests.get(url)
+        message = r.text
+        pyramid_list.append(message)
+    return pyramid_list
 
 
 def wunderground():
@@ -190,7 +203,20 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    pass
+    mode = "r"
+    file_path = LOCAL + "Trispokedovetiles(laser).gcode"
+    success = open(file_path, mode)
+    m10count = 0
+    for blast in success:
+        if "M10 P1"in blast:
+            m10count += 1
+    # answer = len(m10count)
+    mode = "w"
+    file_path2 = str(LOCAL) + "/lasers.pew"
+    pewpew = open(file_path2, mode)
+    pewpew.write(str(m10count))
+    pewpew.close()
+    # return True
 
 
 if __name__ == "__main__":
