@@ -162,7 +162,7 @@ def random_filler_text(number_of_words=200):
     words = make_filler_text_dictionary()
     for i in range(number_of_words):
         x = random.randrange(3, 8)
-        y = random.randrange(3)
+        y = random.randrange(1, 3)
         z = words[x][y]
         para = para + str(z)
         para = para + " "
@@ -183,29 +183,29 @@ def fast_filler(number_of_words=200):
     into and out of the file. Be careful when you read it back in, it'll
     convert integer keys to strings.
     """
-    import os
-    import random
-    mode = "w"
-    file_path = os.getcwd() + "dict_racey.words"
-    if os.file_path.isfile:
-        pass
-    else:
-        filex = open(file_path, mode)
-        words = make_filler_text_dictionary(number_of_words)
-        filex.write(words)
-    mode = "w"
-    filex = open(file_path, mode)
-    para = ""
-    words = make_filler_text_dictionary()
-    for i in range(number_of_words):
-        x = random.randrange(3, 8)
-        y = random.randrange(3)
-        z = words[x][y]
-        para = para + str(z)
-        para = para + " "
-    para = para.captitalize()
-    para = para + "."
-    return para
+    # import os
+    # import random
+    # mode = "w"
+    # file_path = os.getcwd() + "dict_racey.words"
+    # if os.file_path.isfile:
+    #     pass
+    # else:
+    #     filex = open(file_path, mode)
+    #     words = make_filler_text_dictionary(number_of_words)
+    #     filex.write(words)
+    # mode = "w"
+    # filex = open(file_path, mode)
+    # para = ""
+    # words = make_filler_text_dictionary()
+    # for i in range(number_of_words):
+    #     x = random.randrange(3, 8)
+    #     y = random.randrange(3)
+    #     z = words[x][y]
+    #     para = para + str(z)
+    #     para = para + " "
+    # para = para.captitalize()
+    # para = para + "."
+    # return para
 
 
 if __name__ == '__main__':
