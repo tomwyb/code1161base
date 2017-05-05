@@ -165,7 +165,8 @@ def random_filler_text(number_of_words=200):
         y = random.randrange(1, 3)
         z = words[x][y]
         para = para + str(z)
-        para = para + " "
+        if i < number_of_words:
+            para = para + " "
     para = para.capitalize()
     para = para + "."
     return para
