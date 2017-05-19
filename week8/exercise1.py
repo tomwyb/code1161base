@@ -98,8 +98,19 @@ def best_letter_for_pets():
     """
     import string
     the_alphabet = string.lowercase
-    return(the_alphabet)
-    pass
+    highest = 0
+    for i in range(26):
+        x = the_alphabet[i]
+        new_list = pet_filter(x)
+        if len(new_list) > highest:
+            highest = len(new_list)
+        else:
+            pass
+    most_letter = the_alphabet[highest]
+    return(most_letter)
+
+    # print(the_alphabet)
+    # pass
 
 
 def make_filler_text_dictionary():
@@ -118,16 +129,16 @@ def make_filler_text_dictionary():
     """
     import requests
     baseURL = "http://setgetgo.com/randomword/get.php?len="
-    make_dict = {}
+    make_dict = []
     for j in range(3, 7):
         num_list = []
         for i in range(j):
-            url = baseURL + str(i)
+            url = baseURL + str(j)
             r = requests.get(url)
             message = r.text
             num_list.append(message)
-        # make_dict.append(num_list)
-        return{j: num_list}
+        make_dict.append(num_list)
+    return{str(j): num_list}
     return make_dict
     pass
 
