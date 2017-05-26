@@ -164,13 +164,15 @@ def random_filler_text(number_of_words=200):
         x = random.randrange(3, 8)
         y = random.randrange(1, 3)
         z = words[x][y]
-        para = para + str(z)
+        para = para + z
         if i < number_of_words:
             para = para + " "
         else:
             pass
     para = para.capitalize()
+    para = para[:(len(para)-1)]
     para = para + "."
+    print(len(para.split(" ")))
     return str(para)
 
 
@@ -220,6 +222,6 @@ if __name__ == '__main__':
     print(best_letter_for_pets())
     print(make_filler_text_dictionary())
     print(random_filler_text())
-    print(fast_filler())
-    for i in range(10):
-        print(i, fast_filler())
+    # print(fast_filler())
+    # for i in range(10):
+        # print(i, fast_filler())
