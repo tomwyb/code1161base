@@ -146,6 +146,22 @@ def wunderground():
             "latitude":        latitude,
             "longitude":       longitude,
             "local_tz_offset": local_tz_offset}
+    # base = "http://api.wunderground.com/api"
+    # api_key = "2a7730bdd6f6ff60"
+    # country = "AU"
+    # city = "Sydney"
+    # template = "{base}/{key}/conditions/q/{country}/{city}.json"
+    # url = template.format(base=base, key=api_key, country=country, city=city)
+    # r = requests.get(url)
+    # the_json = json.loads(r.text)
+    # obs = the_json['current_observation']
+    #
+    # dict1 = {"state":           obs["display_location"]["state"],
+    #          "latitude":        obs["display_location"]["latitude"],
+    #          "longitude":       obs["display_location"]["longitude"],
+    #          "local_tz_offset": obs["local_tz_offset"]}
+    # print(str(dict1))
+    # return dict1
 
 
 def diarist():

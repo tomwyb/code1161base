@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 """Week 4 tests.
-
 This file tests your code. It'll check that the work in each
 of the exercise files does what it's supposed to.
 """
