@@ -38,7 +38,6 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-
     star_list = []
     for number in range(10):
         star_list.append("*")
@@ -53,7 +52,6 @@ def star_map():
     if it's even. Reuse the is odd function that you've already written.
     E.g.: ["!", "*", "!", "*", "!", "*", "!", "*", "!", "*"]
     """
-
     star_bang = []
 
     def odd_bang(index):
@@ -120,7 +118,6 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-
     content = 0
     hori = []
     vert = []
@@ -255,7 +252,6 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-
     pyr = []
 
     for i in range(5):

@@ -11,11 +11,25 @@ import string
 
 
 def getLetter(index):
+    """Correct the syntax in this file.
+
+    This file doesn't run yet.
+    Go through it and change it until it runs.
+    Remeber that all files must also pass the
+    linter with no errors or warnings!
+    """
     alphabet = string.ascii_lowercase + " "
     return alphabet[index]
 
 
 def week2exersise2():
+    """Correct the syntax in this file.
+
+    This file doesn't run yet.
+    Go through it and change it until it runs.
+    Remeber that all files must also pass the
+    linter with no errors or warnings!
+    """
     indices = [12, 2, 26, 7, 0, 12, 12, 4, 17]
     wordArray = map(getLetter, indices)
     wordArray[0] = wordArray[0].upper()
